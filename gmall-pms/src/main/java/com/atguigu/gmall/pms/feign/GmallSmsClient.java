@@ -13,5 +13,5 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface GmallSmsClient {
 
     @PostMapping("sms/skubounds/sale")
-    public Resp<Object> Sale(@RequestBody() SaleVO saleVO);
+    public Resp<Object> saveSale(@RequestBody() SaleVO saleVO);
 }

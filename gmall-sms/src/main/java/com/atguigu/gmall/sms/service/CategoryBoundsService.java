@@ -4,6 +4,7 @@ import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.gmall.sms.entity.CategoryBoundsEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.stereotype.Component;
 
 
 /**
@@ -13,6 +14,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @email 1113885942@qq.ccom
  * @date 2019-10-29 06:31:23
  */
+@Component
 public interface CategoryBoundsService extends IService<CategoryBoundsEntity> {
 
     PageVo queryPage(QueryCondition params);

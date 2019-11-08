@@ -16,6 +16,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -40,6 +41,7 @@ public class SkuBoundsServiceImpl extends ServiceImpl<SkuBoundsDao, SkuBoundsEnt
         return new PageVo(page);
     }
 
+    @Transactional
     @Override
     public void saveSale(SaleVO saleVO) {
         // 3.1. 新增积分：skuBounds
@@ -61,15 +63,12 @@ public class SkuBoundsServiceImpl extends ServiceImpl<SkuBoundsDao, SkuBoundsEnt
         skuLadderEntity.setSkuId(saleVO.getSkuId());
         this.skuLadderDao.insert(skuLadderEntity);
 
-
         // 3.3. 新增满减信息：skuReduction
-
         SkuFullReductionEntity reductionEntity = new SkuFullReductionEntity();
         reductionEntity.setFullPrice(saleVO.getFullPrice());
         reductionEntity.setReducePrice(saleVO.getReducePrice());
-        reductionEntity.setAddOther(saleVO.getLadderAddOther());
+        reductionEntity.setAddOther(saleVO.getFullAddOther());
         reductionEntity.setSkuId(saleVO.getSkuId());
         this.fullReductionDao.insert(reductionEntity);
     }
-
 }

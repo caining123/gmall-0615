@@ -8,7 +8,7 @@ import com.atguigu.gmall.pms.dao.AttrDao;
 import com.atguigu.gmall.pms.entity.AttrAttrgroupRelationEntity;
 import com.atguigu.gmall.pms.entity.AttrEntity;
 import com.atguigu.gmall.pms.service.AttrService;
-import com.atguigu.gmall.pms.vo.AttrVO;
+import com.atguigu.gmall.pms.AttrVO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

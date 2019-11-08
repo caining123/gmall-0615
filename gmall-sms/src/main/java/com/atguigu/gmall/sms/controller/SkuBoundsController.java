@@ -33,7 +33,7 @@ public class SkuBoundsController {
 
 
     @PostMapping("sale")
-    public Resp<Object> Sale(@RequestBody() SaleVO saleVO) {
+    public Resp<Object> saveSale(@RequestBody() SaleVO saleVO) {
         this.skuBoundsService.saveSale(saleVO);
         return Resp.ok(null);
     }

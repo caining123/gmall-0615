@@ -1,6 +1,10 @@
+
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://192.168.79.129:3306/guli_wms
     password: root
     username: root
+logging:
+  level:
+    com.atguigu: debug

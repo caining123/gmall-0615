@@ -4,3 +4,6 @@ spring:
     url: jdbc:mysql://192.168.79.129:3306/guli_sms
     username: root
     password: root
+logging:
+  level:
+    com.atguigu: debug

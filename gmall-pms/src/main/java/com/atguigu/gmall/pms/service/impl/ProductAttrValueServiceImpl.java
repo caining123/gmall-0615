@@ -1,17 +1,20 @@
 package com.atguigu.gmall.pms.service.impl;
 
-import org.springframework.stereotype.Service;
-import java.util.Map;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.Query;
 import com.atguigu.core.bean.QueryCondition;
-
 import com.atguigu.gmall.pms.dao.ProductAttrValueDao;
 import com.atguigu.gmall.pms.entity.ProductAttrValueEntity;
 import com.atguigu.gmall.pms.service.ProductAttrValueService;
+import com.atguigu.gmall.pms.vo.SpuAttributeValueVO;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service("productAttrValueService")
@@ -25,6 +28,22 @@ public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao
         );
 
         return new PageVo(page);
+    }
+
+    @Autowired
+    private ProductAttrValueDao productAttrValueDao;
+
+    @Override
+    public List<SpuAttributeValueVO> querySearchAttrValue(Long spuId) {
+        List<ProductAttrValueEntity> productAttrValueEntities = this.productAttrValueDao.querySearchAttrValue(spuId);
+        return productAttrValueEntities.stream().map(productAttrValueEntity -> {
+            SpuAttributeValueVO spuAttributeValueVO = new SpuAttributeValueVO();
+            spuAttributeValueVO.setName(productAttrValueEntity.getAttrName());
+            spuAttributeValueVO.setProductAttributeId(productAttrValueEntity.getAttrId());
+            spuAttributeValueVO.setValue(productAttrValueEntity.getAttrName());
+            return spuAttributeValueVO;
+        }).collect(Collectors.toList());
+
     }
 
 }

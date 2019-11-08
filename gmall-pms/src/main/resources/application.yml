@@ -1,6 +1,14 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.79.129:3306/guli_pms
+    url: jdbc:mysql://192.168.79.129:3306/guli_pms?useUnicode=true&characterEncoding=utf8&useSSL=true
     username: root
     password: root
+  rabbitmq:
+    host: 192.168.79.129
+    username: caining
+    password: root
+    virtual-host: /caining
+logging:
+  level:
+    com.atguigu: debug
